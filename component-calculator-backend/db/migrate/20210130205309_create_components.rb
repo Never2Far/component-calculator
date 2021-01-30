@@ -3,6 +3,7 @@ class CreateComponents < ActiveRecord::Migration[6.0]
     create_table :components do |t|
       t.string :name
       t.string :unit
+      t.integer :pattern_id
 
       t.timestamps
     end
