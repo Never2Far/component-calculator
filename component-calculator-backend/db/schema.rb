@@ -36,15 +36,21 @@ ActiveRecord::Schema.define(version: 2021_01_30_210627) do
   end
 
   create_table "patterns", force: :cascade do |t|
-    t.integer "band1_color_id"
-    t.integer "band2_color_id"
-    t.integer "band3_color_id"
-    t.integer "band4_color_id"
-    t.integer "band5_color_id"
-    t.integer "band6_color_id"
+    t.bigint "color1_id"
+    t.bigint "color2_id"
+    t.bigint "color3_id"
+    t.bigint "color4_id"
+    t.bigint "color5_id"
+    t.bigint "color6_id"
     t.integer "value_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["color1_id"], name: "index_patterns_on_color1_id"
+    t.index ["color2_id"], name: "index_patterns_on_color2_id"
+    t.index ["color3_id"], name: "index_patterns_on_color3_id"
+    t.index ["color4_id"], name: "index_patterns_on_color4_id"
+    t.index ["color5_id"], name: "index_patterns_on_color5_id"
+    t.index ["color6_id"], name: "index_patterns_on_color6_id"
   end
 
   create_table "values", force: :cascade do |t|

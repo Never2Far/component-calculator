@@ -4,7 +4,7 @@ class CreateComponents < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :unit
       t.integer :pattern_id
-
+      # t.references :colors
       t.timestamps
     end
   end

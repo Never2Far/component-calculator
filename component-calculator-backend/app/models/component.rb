@@ -1,5 +1,6 @@
 class Component < ApplicationRecord
     belongs_to :pattern
-    delegate :value, to: :pattern, allow_nil: true
-    has_many :colors, through: :pattern
+    # has_many :colors, through: :pattern
+    has_one :value, through: :pattern
+    
 end
