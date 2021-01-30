@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  digit: 1
+  multiplier: 1
+  tolerance: 1.5
+  tolerance_letter: MyString
+  temp_coefficient: 1
+  temp_coefficient_letter: MyString
+
+two:
+  name: MyString
+  digit: 1
+  multiplier: 1
+  tolerance: 1.5
+  tolerance_letter: MyString
+  temp_coefficient: 1
+  temp_coefficient_letter: MyString
