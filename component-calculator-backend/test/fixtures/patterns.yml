@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  band1_color_id: 1
+  band2_color_id: 1
+  band3_color_id: 1
+  band4_color_id: 1
+  band5_color_id: 1
+  band6_color_id: 1
+  value_id: 1
+
+two:
+  band1_color_id: 1
+  band2_color_id: 1
+  band3_color_id: 1
+  band4_color_id: 1
+  band5_color_id: 1
+  band6_color_id: 1
+  value_id: 1
