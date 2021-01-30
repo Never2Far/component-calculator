@@ -5,7 +5,9 @@ class CreateValues < ActiveRecord::Migration[6.0]
       t.integer :digit2
       t.integer :digit3
       t.integer :multiplier
-      t.floattemp_coefficient :tolerance
+      t.float :tolerance
+      t.integer :temp_coefficient
+
 
       t.timestamps
     end
