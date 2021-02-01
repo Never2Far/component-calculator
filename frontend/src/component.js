@@ -1,8 +1,8 @@
 class Component {
 
     constructor(name = 'resistor', digit1 = 2, digit2 = 2, digit3 = null, 
-                multiplier = 1000, tolerance = null, toleranceLetter = null, 
-                tempCoef = null, tempCoefLetter = null)     {
+                multiplier = 1000, tolerance = null, 
+                tempCoef = null)     {
 
                     this.name = name;
                     this.digit1 = digit1;
@@ -10,9 +10,7 @@ class Component {
                     this.digit3 = digit3; 
                     this.multiplier = multiplier;
                     this.tolerance = tolerance;
-                    // this.toleranceLetter = toleranceLetter; 
                     this.tempCoef = tempCoef;
-                    // this.tempCoefLetter = tempCoefLetter;
                 }
 
 get bandCount() {
@@ -135,12 +133,67 @@ unit() {
 
 
 
-display() {
-
-
+displayValue() {
+if (this.tolerance == null) {
+return `${this.value} ${this.unit()}`
+}
+else {
+    return `${this.value} ${this.unit()} +/- ${this.tolerance}%`
+}
 }
 
+get colorCode() {
+    const code = [];
+    code.push(Color.colorFromDigit(this.digit1))
+    code.push(Color.colorFromDigit(this.digit2))
 
+    switch (this.bandCount) {
+        case 6:
+            code.push(Color.colorFromTempCoeff(this.tempCoef));
+        case 5:
+        case 6:
+            code.push(Color.colorFromDigit(this.digit3));
+        case 4:
+        case 5:
+        case 6:
+            code.push(Color.colorFromTolerance(this.tolerance));
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            code.push(Color.colorFromMultiplier(this.multiplier));
+            break;
+    }
+    return code;
+}
+
+set colorCode(code) {
+    // let blankComp = new Component(this.name, this.digit1, this.digit2)
+    // Object.keys(this).forEach(k => this[k] = null);
+    
+this.digit3 = null;
+this.tolerance = null;
+this.tempCoef = null;
+
+    this.digit1 = Color.propValueFromColorName(code[0], 'digit')
+    this.digit2 = Color.propValueFromColorName(code[1], 'digit')
+
+    switch (code.length) {
+        case 4:
+            this.tolerance = Color.propValueFromColorName(code[3], 'tolerance')
+        case 3:
+            this.multiplier = Color.propValueFromColorName(code[2], 'multiplier')
+            break;
+            case 6:
+                this.tempCoef = Color.propValueFromColorName(code[5], 'tempCoef')
+            case 5:
+            this.digit3 = Color.propValueFromColorName(code[2], 'digit')
+            this.multiplier = Color.propValueFromColorName(code[3], 'multiplier')
+            this.tolerance = Color.propValueFromColorName(code[4], 'tolerance')
+            break;
+    }
+    return this.colorCode
+}
 
 
 
