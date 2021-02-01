@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     Color.fetchColors();
 
     setTimeout(function(){ 
-        const [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
-        console.log(BLACK);
-    }, 500);
+        const colorObjs = [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
+        console.log(colorObjs[2]);
+    }, 2000);
 
     setTimeout(() => {
 
@@ -25,8 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(resistor.bandCount)
             console.log(resistor.value)
             console.log(resistor.unit())
-
-    }, 1000)
+            console.log(resistor.displayValue())
+            setTimeout(() => {
+                console.log(Color.colorFromDigit(2))
+                console.log(resistor.colorCode)
+                console.log(Color.propValueFromColorName('red', 'multiplier'))
+                console.log(resistor.colorCode = ['orange', 'yellow', 'brown', 'green'])
+                console.log(resistor.displayValue())
+            }, 2000)
+            
+    }, 4000)
 
 
 
