@@ -16,12 +16,18 @@ class Component {
                 }
 
 get bandCount() {
-    let props = this.getOwnPropertyNames().filter(prop => prop != null);
-    if (props.length >= 6) {
+    // let props = this.keys.filter(prop => prop != null);
+    let pcount = 0;
+    for (const key in this) {
+            const element = this[key];
+            element != null ? pcount++ : false
+    }
+    pcount--; //subtract one for name property
+    if (pcount >= 6) {
         return 6;
     }
     else {
-        return props.length;
+        return pcount;
     }
 }
 
@@ -106,6 +112,36 @@ get parallelOperation() {
         return 'normal'
     }
 }
+
+
+unit() {
+    let unit;
+    switch (this.name) {
+        case 'resistor':
+            unit = 'Ohms'
+            break;
+            case 'inductor':
+                unit = 'Henries'
+                break;
+                case 'capacitor':
+                    unit = 'Farads'
+                    break;
+        default:
+            unit = null
+            break;
+    }
+    return unit;
+}
+
+
+
+display() {
+
+
+}
+
+
+
 
 
 }

@@ -3,26 +3,32 @@ const COLORS_URL = `${BASE_URL}/colors`
 const COLORS=[];
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    const page = document.getElementById('page-container');
 
-const page = document.getElementById('page-container');
+    Color.fetchColors();
 
-Color.fetchColors();
-    let colorsArr = COLORS.slice();
-console.log(COLORS);
+    setTimeout(function(){ 
+        const [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
+        console.log(BLACK);
+    }, 500);
 
-console.log(COLORS);
+    setTimeout(() => {
 
-setTimeout(function(){ console.log(COLORS[0]); }, 500);
+        const resistor = new Component(
+                                    name = 'resistor', 
+                                    digit1 = 2, 
+                                    digit2 = 2, 
+                                    digit3 = null, 
+                                    multiplier = 1000
+                                    )
+            console.log(resistor)
+            console.log(resistor.bandCount)
+            console.log(resistor.value)
+            console.log(resistor.unit())
 
-console.log(COLORS);
-
-
-// const [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
+    }, 1000)
 
 
 
-
-
-})
+});
 
