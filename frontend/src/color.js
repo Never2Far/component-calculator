@@ -1,10 +1,10 @@
 class Color {
-    constructor(name, digit, multiplier, tolerance = null, temp_coeff = null) {
+    constructor(name, digit, multiplier, tolerance = null, tempCoef = null) {
     this.name = name;
     this.digit = digit;
     this.multiplier = multiplier;
     this.tolerance = tolerance;
-    this.temp_coeff = temp_coeff;
+    this.tempCoef = tempCoef;
     }
 
     
@@ -31,7 +31,57 @@ class Color {
 // return colorArr;
         }   
 
+static colorFromDigit(digit) {
+    let res;
+    for (const key in COLORS) {
+            const element = COLORS[key];
+            if (element.digit == digit) {
+                res = element.name;
+            }
+    }
+     return res
+}
 
-        
+static colorFromMultiplier(multiplier) {
+
+    let res;
+    for (const key in COLORS) {
+            const element = COLORS[key];
+            if (element.multiplier == multiplier) {
+                res = element.name;
+            }
+    }
+     return res
+}
+
+static colorFromTolerance(tolerance) {
+    let res;
+    for (const key in COLORS) {
+            const element = COLORS[key];
+            if (element.tolerance == tolerance) {
+                res = element.name;
+            }
+    }
+     return res
+}
+
+static colorFromTempCoeff(tempCoef) {
+    let res;
+    for (const key in COLORS) {
+            const element = COLORS[key];
+            if (element.tempCoef == tempCoef) {
+                res = element.name;
+            }
+    }
+     return res
+}
              // function getColor(name = 'red') {
+
+
+    static propValueFromColorName(colorName, propertyName) {
+        return eval(colorName.toUpperCase()+"."+propertyName)
+    }
+
+
+
 }
