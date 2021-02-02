@@ -82,6 +82,14 @@ static colorFromTempCoeff(tempCoef) {
         return eval(colorName.toUpperCase()+"."+propertyName)
     }
 
-
-
+    static standardize_color(colorName) { 
+        if (colorName == 'brown') {
+            return '#8b4513'
+        }
+        else {
+        var ctx = document.createElement('canvas').getContext('2d');
+         ctx.fillStyle = colorName;
+         return ctx.fillStyle; 
+        }
+    }
 }
