@@ -116,13 +116,13 @@ unit() {
     let unit;
     switch (this.name) {
         case 'resistor':
-            unit = 'Ohms'
+            unit = '\u03A9 (Ohms) '
             break;
             case 'inductor':
-                unit = 'Henries'
+                unit = '\u00B5H (microHenries)'
                 break;
                 case 'capacitor':
-                    unit = 'Farads'
+                    unit = 'nF (nanoFarads)'
                     break;
         default:
             unit = null
@@ -195,6 +195,24 @@ this.tempCoef = null;
     return this.colorCode
 }
 
+
+static drawBands(compObj) {
+    const compDiv = document.querySelector('#component');
+    while (compDiv.firstChild) {
+        compDiv.removeChild(compDiv.firstChild);
+    }
+    for (let i = 0; i < compObj.bandCount; i++) {
+        let bandDiv = document.createElement('div');
+        bandDiv.setAttribute('id', `color-band-${i + 1}`);
+        bandDiv.setAttribute('class', `color-band`);
+        bandDiv.style.backgroundColor = Color.standardize_color(compObj.colorCode[i]);
+        compDiv.appendChild(bandDiv);
+    }
+}
+
+static clearBands() {
+    
+}
 
 
 }
