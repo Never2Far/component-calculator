@@ -134,7 +134,10 @@ unit() {
 
 
 displayValue() {
-if (this.tolerance == null) {
+    if (this.tempCoef != null) {
+        return `${this.value} ${this.unit()} +/- ${this.tolerance}%  ${this.tempCoef}ppm/K`
+    } 
+else if (this.tolerance == null) {
 return `${this.value} ${this.unit()}`
 }
 else {
@@ -143,26 +146,44 @@ else {
 }
 
 get colorCode() {
-    const code = [];
-    code.push(Color.colorFromDigit(this.digit1))
-    code.push(Color.colorFromDigit(this.digit2))
+    const code = new Array(this.bandCount)
+    code[0] = Color.colorFromDigit(this.digit1)
+    code[1] = Color.colorFromDigit(this.digit2)
+    // code.push(Color.colorFromDigit(this.digit1))
+    // code.push(Color.colorFromDigit(this.digit2))
 
     switch (this.bandCount) {
-        case 6:
-            code.push(Color.colorFromTempCoeff(this.tempCoef));
-        case 5:
-        case 6:
-            code.push(Color.colorFromDigit(this.digit3));
         case 4:
-        case 5:
-        case 6:
-            code.push(Color.colorFromTolerance(this.tolerance));
+            code [3] = Color.colorFromTolerance(this.tolerance)
         case 3:
-        case 4:
-        case 5:
-        case 6:
-            code.push(Color.colorFromMultiplier(this.multiplier));
+            code[2] = Color.colorFromMultiplier(this.multiplier)
             break;
+            case 6:
+                code[5] = Color.colorFromTempCoeff(this.tempCoef)
+            case 5:
+                code[2] = Color.colorFromDigit(this.digit3)
+                code[3] = Color.colorFromMultiplier(this.multiplier)            
+                code [4] = Color.colorFromTolerance(this.tolerance)
+            break;
+        // case 6:
+        //     code[5] = Color.colorFromTempCoeff(this.tempCoef)
+        //     // code.push(Color.colorFromTempCoeff(this.tempCoef));
+        // case 5:
+        // case 6:
+        //     code[2] = Color.colorFromDigit(this.digit3)
+        //     // code.push(Color.colorFromDigit(this.digit3));
+        // case 4:
+        // case 5:
+        // case 6:
+        //     code [3] = Color.colorFromTolerance(this.tolerance)
+        //     // code.push(Color.colorFromTolerance(this.tolerance));
+        // case 3:
+        // case 4:
+        // case 5:
+        // case 6:
+        //     code[]
+        //     code.push(Color.colorFromMultiplier(this.multiplier));
+        //     break;
     }
     return code;
 }
@@ -198,21 +219,42 @@ this.tempCoef = null;
 
 static drawBands(compObj) {
     const compDiv = document.querySelector('#component');
+    // const valueContainer = document.querySelector('#band-value-container');
     while (compDiv.firstChild) {
         compDiv.removeChild(compDiv.firstChild);
     }
+    // while (valueContainer.firstChild) {
+    //     valueContainer.removeChild(valueContainer.firstChild);
+    // }
     for (let i = 0; i < compObj.bandCount; i++) {
         let bandDiv = document.createElement('div');
+        
+        let valueSpan = document.querySelector('#component-value');
+        
         bandDiv.setAttribute('id', `color-band-${i + 1}`);
-        bandDiv.setAttribute('class', `color-band`);
+        // valueDiv.setAttribute('id', `band-value-${i + 1}`);
+
+        if (i == (compObj.bandCount - 1)) {
+            bandDiv.setAttribute('class', `color-band-last`);
+            // valueDiv.setAttribute('class', `band-value-last`);
+        }
+        else {
+            bandDiv.setAttribute('class', `color-band`);
+            // valueDiv.setAttribute('class', `band-value`);
+        }
         bandDiv.style.backgroundColor = Color.standardize_color(compObj.colorCode[i]);
+
+        // let valueSpan = document.createElement('span');
         compDiv.appendChild(bandDiv);
+        valueSpan.innerText = compObj.displayValue();
+
+
     }
 }
 
-static clearBands() {
-    
-}
+// static clearBands() {
+//     const compDiv = document.querySelector('#component');
+// }
 
 
 }
