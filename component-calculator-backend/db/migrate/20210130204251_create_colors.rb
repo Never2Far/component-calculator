@@ -3,7 +3,7 @@ class CreateColors < ActiveRecord::Migration[6.0]
     create_table :colors do |t|
       t.string :name
       t.integer :digit
-      t.integer :multiplier
+      t.float :multiplier
       t.float :tolerance
       t.string :tolerance_letter
       t.integer :temp_coefficient

@@ -111,7 +111,7 @@ white.save
 
 gold = Color.new
 gold.name = 'gold'
-gold.digit = 9
+gold.digit = nil
 gold.multiplier = 0.1
 gold.tolerance = 5
 gold.tolerance_letter = 'J'
@@ -121,7 +121,7 @@ gold.save
 
 silver = Color.new
 silver.name = 'silver'
-silver.digit = 9
+silver.digit = nil
 silver.multiplier = 0.01
 silver.tolerance = 10
 silver.tolerance_letter = 'K'
@@ -129,9 +129,9 @@ silver.temp_coefficient = nil
 silver.temp_coefficient_letter = nil
 silver.save
 
-pattern = Pattern.new
-pattern.color1_id = 2
-pattern.color2_id = 2
-pattern.color3_id = 1
-pattern.save!
+# pattern = Pattern.new
+# pattern.color1_id = 2
+# pattern.color2_id = 2
+# pattern.color3_id = 1
+# pattern.save!
 

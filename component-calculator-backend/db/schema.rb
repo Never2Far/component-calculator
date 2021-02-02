@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_210627) do
   create_table "colors", force: :cascade do |t|
     t.string "name"
     t.integer "digit"
-    t.integer "multiplier"
+    t.float "multiplier"
     t.float "tolerance"
     t.string "tolerance_letter"
     t.integer "temp_coefficient"
