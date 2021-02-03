@@ -6,6 +6,7 @@
     <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/color.js" charset="UTF-8"></script>
     <script type="application/javascript" src="src/component.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/interface.js" charset="UTF-8"></script>
     <link rel="stylesheet" href="styles.css">
     
     <title>Component Calculator</title>
@@ -15,8 +16,17 @@
 
     <div id="component">
         
-    </div><br>
-<span id="component-value"></span>
+    </div><br><br>
+    <!-- <div id="band-value-container"></div> -->
+<span id="component-value"></span><br><br><br>
+<label for="band-count-picker">Choose the number of bands on the component:</label><br>
+
+<select name="band-count-picker" id="band-count-picker">
+  <option value="3">3 Bands</option>
+  <option value="4" selected>4 Bands</option>
+  <option value="5">5 Bands</option>
+  <option value="6">6 Bands</option>
+</select>
  </div>
 </div>
 
