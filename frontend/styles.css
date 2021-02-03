@@ -8,7 +8,7 @@
 #component {
 display: inline-flex;
 height: 200px;
-width: 600px;
+width: 475px;
 border-style: solid;
 border-top-width: 5px;
 border-bottom-width: 5px;
@@ -16,6 +16,23 @@ border-left-width: 5px;
 border-right-width: 5px;
 border-color: black;
 /* column-count: 6; */
+}
+
+.band-value {
+    width: 48px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: dashed;
+
+border-bottom-width: 1px;
+border-left-width: 1px;
+border-right-width: 1px;
+border-color: black;
+}
+
+#band-value-container {
+    display: inline-flex;
+    width: 475px
 }
 
 
@@ -26,6 +43,26 @@ border-color: black;
     margin-right: 10px;
 }
 
+.color-band-last {
+    height: 200px;
+    width: 50px;
+    margin-left: 60px;
+    margin-right: 10px;
+}
+
+.band-value-last {
+    width: 48px;
+    margin-left: 60px;
+    margin-right: 10px;
+    border-style: dashed;
+
+border-bottom-width: 1px;
+border-left-width: 1px;
+border-right-width: 1px;
+border-color: black;
+}
+
 #component-value {
     font-size: medium;
+    margin-left: 100px;
 }
