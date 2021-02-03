@@ -159,6 +159,7 @@ get colorCode() {
             code[2] = Color.colorFromMultiplier(this.multiplier)
             break;
             case 6:
+                
                 code[5] = Color.colorFromTempCoeff(this.tempCoef)
             case 5:
                 code[2] = Color.colorFromDigit(this.digit3)
@@ -243,6 +244,13 @@ static drawBands(compObj) {
             // valueDiv.setAttribute('class', `band-value`);
         }
         bandDiv.style.backgroundColor = Color.standardize_color(compObj.colorCode[i]);
+
+        if (compObj.colorCode[i] == 'white') {
+            bandDiv.style.borderStyle = 'none dashed none dashed'
+            bandDiv.style.borderWidth = '1px'
+            bandDiv.style.borderColor = 'black'
+            bandDiv.style.backgroundColor = ''
+        }
 
         // let valueSpan = document.createElement('span');
         compDiv.appendChild(bandDiv);
