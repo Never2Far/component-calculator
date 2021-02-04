@@ -13,6 +13,36 @@ class Component {
                     this.tempCoef = tempCoef;
                 }
 
+
+static saveComponent(compObj) {
+
+    const params = {
+        name: compObj.name,
+        value: compObj.value(),
+        bandCount: compObj.bandCount,
+        colorCode: compObj.colorCode.toString(),
+        valueDisplay: compObj.displayValue()
+    }
+
+    // compObj.digit3 ? params['digit3'] = compObj.digit3 : false
+    // compObj.tolerance ? params['tolerance'] = compObj.tolerance : false
+    // compObj.tempCoef ? params['temp_coefficient'] = compObj.tempCoef : false
+
+
+
+    return fetch(COMPONENTS_URL , {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(params)})
+        .then(response => response.json())
+        .then(component => {console.log(component)})
+}
+
+
+
+
+
+
 get bandCount() {
     // let props = this.keys.filter(prop => prop != null);
     let pcount = 0;
