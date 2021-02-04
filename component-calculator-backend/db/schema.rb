@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_224035) do
+ActiveRecord::Schema.define(version: 2021_02_04_230010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_02_04_224035) do
     t.string "temp_coefficient_letter"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.string "name"
+    t.float "value"
+    t.integer "band_count"
+    t.string "color_code"
+    t.string "base_unit"
+    t.string "value_display"
   end
 
 end
