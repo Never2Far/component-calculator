@@ -1,23 +1,148 @@
 
+html {
+    min-height: 100vh;
+    padding: 0;
+  }
+  
+  body {
+    height: 100vh;
+    padding: 0;
+    background-color: white;
+  }
+  
+  
+  
+  #page-container {
+      position: relative;
+      min-height: 100vh;
+      display: block;
+      
+  }
+  
+  
+  #sub-page-container {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    min-height: 100vh;
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+  }
 
-#page-container {
-    display: block;
-}
+
+
+  #component-container {
+    display: grid;
+    grid-template-columns: 230px 500px 230px;
+    grid-template-rows: 105px 105px;
+    gap: 0px 0px;
+    grid-template-areas:
+      "left-top component right-top"
+      "left-bottom component right-bottom";
+  }
+  
+  /* .component { grid-area: component; }
+  
+  .left-bottom { grid-area: left-bottom; }
+  
+  .left-top { grid-area: left-top; }
+  
+  .right-top { grid-area: right-top; }
+  
+  .right-bottom { grid-area: right-bottom; }
+   */
+
+/* #component-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+  
 
 
 #component {
-display: inline-flex;
-height: 200px;
-width: 475px;
+    display: inline-flex;
+/* height: 200px;
+width: 500px; */
 border-style: solid;
 border-top-width: 5px;
 border-bottom-width: 5px;
 border-left-width: 5px;
 border-right-width: 5px;
 border-color: black;
+grid-area: component;
 /* column-count: 6; */
 }
 
+
+/* #left-leg {
+    width: 200px;
+    height: 200px;
+    vertical-align: top;
+    margin-left: auto;
+    display: inline-flex;
+} */
+
+#left-top {
+    /* display: block;
+    width: 100%;
+    height: 100px; */
+    grid-area: left-top;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    /* vertical-align: top; */
+}
+
+#left-bottom {
+  /* width: 100%;
+  height: 100px; */
+  grid-area: left-bottom;
+  border-top-style: solid;
+    border-top-color: black;
+    border-top-width: 2px;
+    /* vertical-align: top; */
+}
+
+/* #right-leg {
+    vertical-align: top;
+    width: 200px;
+    vertical-align: top;
+    margin-right: auto;
+    display: inline-flex;
+} */
+
+#right-top {
+    /* display: table;
+    width: 100%;
+    height: 100px; */
+    grid-area: right-top;
+    /* vertical-align: top; */
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+#right-bottom {
+    /* display: table;
+    width: 100%;
+    height: 100px; */
+    grid-area: right-bottom;
+    
+  border-top-style: solid;
+    border-top-color: black;
+    border-top-width: 2px;
+    /* vertical-align: top; */
+}
+
+
+
+/* 
 .band-value {
     width: 48px;
     margin-left: 10px;
@@ -28,12 +153,12 @@ border-bottom-width: 1px;
 border-left-width: 1px;
 border-right-width: 1px;
 border-color: black;
-}
+} */
 
-#band-value-container {
+/* #band-value-container {
     display: inline-flex;
-    width: 475px
-}
+    width: 100%;
+} */
 
 
 .color-band {
@@ -50,7 +175,7 @@ border-color: black;
     margin-right: 10px;
 }
 
-.band-value-last {
+/* .band-value-last {
     width: 48px;
     margin-left: 60px;
     margin-right: 10px;
@@ -60,11 +185,17 @@ border-bottom-width: 1px;
 border-left-width: 1px;
 border-right-width: 1px;
 border-color: black;
-}
+} */
+
+/* #component-value-container {
+    width: 100%;
+    display: inline-flex;
+} */
 
 #component-value {
     font-size: x-large;
-    margin-left: 100px;
+    margin-left: 325px;
+    
 }
 
 #color-picker-container {
@@ -101,4 +232,54 @@ font-size: large;
 border-bottom-style: solid;
 border-bottom-color: black;
 border-bottom-width: 2px;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.violet {
+    background-color: violet;
+}
+
+.gold {
+    background-color: gold;
+}
+
+.silver {
+    background-color: silver;
+}
+
+.black {
+    background-color: black;
+    color: white;
+}
+
+.brown {
+    background-color: saddlebrown;
+    color: white;
+}
+
+.white {
+    background-color: white;
+}
+
+.grey {
+    background-color: grey;
 }
