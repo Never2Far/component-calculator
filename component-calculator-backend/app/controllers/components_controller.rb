@@ -6,8 +6,9 @@ class ComponentsController < ApplicationController
         comp.name = params[:name]
         comp.value = params[:value]
         comp.band_count = params[:band_count]
-        comp.base_unit = params[:unit]
-        comp.value_display = params[:valueDisplay]
+        comp.base_unit = params[:base_unit]
+        comp.value_display = params[:value_display]
+        comp.color_code = params[:color_code]
 
         comp.save!
 
