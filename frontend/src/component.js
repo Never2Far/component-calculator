@@ -16,12 +16,19 @@ class Component {
 
 static saveComponent(compObj) {
 
+const bCount = compObj.bandCount;
+const cCode = compObj.colorCode.toString();
+const vDisplay = compObj.displayValue();
+const baseUnit = compObj.unit();
+
+
     const params = {
         name: compObj.name,
-        value: compObj.value(),
-        bandCount: compObj.bandCount,
-        colorCode: compObj.colorCode.toString(),
-        valueDisplay: compObj.displayValue()
+        value: compObj.value,
+        band_count: bCount,
+        color_code: cCode,
+        value_display: vDisplay,
+        base_unit: baseUnit
     }
 
     // compObj.digit3 ? params['digit3'] = compObj.digit3 : false
@@ -35,7 +42,22 @@ static saveComponent(compObj) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(params)})
         .then(response => response.json())
-        .then(component => {console.log(component)})
+        .then(component => {
+            
+            
+            console.log(component.data.attributes);
+            const servedComp = component.data.attributes;
+            const newComp = new Component();
+            
+
+            newComp.name = servedComp.name;
+            newComp.bandCount = servedComp.band_count;
+            newComp.colorCode = servedComp.color_code.split(',');
+
+            console.log(newComp);
+        
+        
+        })
 }
 
 
