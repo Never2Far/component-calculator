@@ -56,7 +56,10 @@ const baseUnit = compObj.unit();
 
             console.log(newComp);
         
-        
+            successNotice.className = "show";
+                setTimeout(() => {
+                    successNotice.className = successNotice.className.replace("show", ""); 
+                   }, 3000);
         })
 }
 
@@ -271,6 +274,9 @@ this.tempCoef = null;
 
 
 static drawBands(compObj) {
+    
+
+
     const compDiv = document.querySelector('#component');
     // const valueContainer = document.querySelector('#band-value-container');
     while (compDiv.firstChild) {
@@ -291,6 +297,10 @@ static drawBands(compObj) {
             bandDiv.setAttribute('class', `color-band-last`);
             // valueDiv.setAttribute('class', `band-value-last`);
         }
+        // if (i == (0)) {
+        //     bandDiv.setAttribute('class', `color-band-first`);
+        //     // valueDiv.setAttribute('class', `band-value-last`);
+        // }
         else {
             bandDiv.setAttribute('class', `color-band`);
             // valueDiv.setAttribute('class', `band-value`);
@@ -310,11 +320,17 @@ static drawBands(compObj) {
 
 
     }
+    displayedComponent.length > 0 ? displayedComponent.pop() : false
+    displayedComponent.push(compObj)
 }
 
 // static clearBands() {
 //     const compDiv = document.querySelector('#component');
 // }
+
+
+
+
 
 
 }
