@@ -3,12 +3,15 @@ const COLORS_URL = `${BASE_URL}/colors`
 const COMPONENTS_URL = `${BASE_URL}/components`
 const COLORS=[];
 const page = document.getElementById('page-container');
+const displayedComponent = [];
+
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
     
     
+
 
 
 
@@ -19,10 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(function(){ 
         window.colorObjs = [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
         // console.log(colorObjs[2]);
+        window.successNotice = document.getElementById('success-notice');
     }, 500);
 
     setTimeout(() => {
-
+            const btn = document.getElementById('save-button')
+            
+            
+            btn.addEventListener('click', () => {
+                Component.saveComponent(displayedComponent[0]);
+            })
         // const resistor = new Component(
         //                             name = 'resistor', 
         //                             digit1 = 6, 
@@ -50,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //             // Component.drawBands(resistor);
 
 
-            }, 5000)
+            }, 3000)
             
     // }, 600)
 
