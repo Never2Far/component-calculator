@@ -10,7 +10,9 @@ html {
     background-color: white;
   }
   
-  
+  h3 {
+      text-align: center;
+  }
   
   #page-container {
       position: relative;
@@ -74,6 +76,11 @@ border-top-width: 5px;
 border-bottom-width: 5px;
 border-left-width: 5px;
 border-right-width: 5px;
+border-top-left-radius: 80px;
+border-bottom-left-radius: 80px;
+overflow: hidden;
+border-top-right-radius: 80px;
+border-bottom-right-radius: 80px;
 border-color: black;
 grid-area: component;
 /* column-count: 6; */
@@ -166,6 +173,7 @@ border-color: black;
     width: 50px;
     margin-left: 10px;
     margin-right: 10px;
+    
 }
 
 .color-band-last {
@@ -173,6 +181,17 @@ border-color: black;
     width: 50px;
     margin-left: 60px;
     margin-right: 10px;
+   
+    
+}
+
+.color-band-first {
+    height: 200px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    
 }
 
 /* .band-value-last {
@@ -192,14 +211,37 @@ border-color: black;
     display: inline-flex;
 } */
 
+#band-count-picker-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
+}
+
+/* #band-count-picker {
+    margin-right: auto;
+    margin-left: auto;
+} */
+
 #component-value {
     font-size: x-large;
-    margin-left: 325px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
     
 }
 
 #color-picker-container {
+    /* justify-self: center; */
     display: inline-flex;
+    justify-content: center;
     width: 775px;
     min-height: 400px;
     height: fit-content;
@@ -208,6 +250,8 @@ border-color: black;
 border-top-width: 5px;
 border-bottom-width: 5px;
 padding-left: 10px;
+margin-left: 92px;
+margin-right: 92px;
 }
 
 .color-picker-column {
@@ -233,6 +277,90 @@ border-bottom-style: solid;
 border-bottom-color: black;
 border-bottom-width: 2px;
 }
+
+
+#save-button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#success-notice {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #success-notice.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  #login-form-container 
+  {
+  }
+
+  .centered {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "left-col center-col center-col right-col"
+      "left-col center-col center-col right-col";
+  }
+  .center-col { grid-area: center-col; }
+  .left-col { grid-area: left-col; }
+  .right-col { grid-area: right-col; }
 
 .red {
     background-color: red;
