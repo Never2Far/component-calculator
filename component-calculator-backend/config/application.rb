@@ -33,5 +33,9 @@ module ComponentCalculatorBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_comp_calc', expire_after: 7.days 
+    config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore, key: '_comp_calc')
+    # config.middleware.use config.session_store, config.session_options
   end
 end
