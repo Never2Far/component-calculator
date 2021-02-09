@@ -10,12 +10,9 @@ const displayedComponent = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    
-
-
-
-
     const compDiv = document.querySelector('#component');
+
+
 
     Color.fetchColors();
 
@@ -27,43 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
             const btn = document.getElementById('save-button')
+            const loginForm = document.getElementById('login-form')
             
             
             btn.addEventListener('click', () => {
                 Component.saveComponent(displayedComponent[0]);
             })
-        // const resistor = new Component(
-        //                             name = 'resistor', 
-        //                             digit1 = 6, 
-        //                             digit2 = 9, 
-        //                             digit3 = 3, 
-        //                             multiplier = 100000,
-        //                             tolerance = .25,
-        //                             tempCoef = 250
-        //                             )
-        //                             Component.saveComponent(resistor);
-    //         // console.log(resistor)
-    //         // console.log(resistor.bandCount)
-    //         // console.log(resistor.value)
-    //         // console.log(resistor.unit())
-    //         // console.log(resistor.displayValue())
-    //         // Component.drawBands(resistor);
 
-    //         // setTimeout(() => {
-                
-    //         //     console.log(Color.colorFromDigit(2))
-    //             // console.log(resistor.colorCode)
-    //         //     console.log(Color.propValueFromColorName('red', 'multiplier'))
-    //             // console.log(resistor.colorCode = ['orange', 'yellow', 'brown', 'green'])
-    //             // console.log(resistor.displayValue())
-    //             // Component.drawBands(resistor);
-
-
+            loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault()
+                    params = {
+                        username: loginForm.username.value,
+                        password: loginForm.password.value
+                    }
+                   User.findOrCreate(params, e.submitter.id);
+            })
             }, 3000)
-            
-    // }, 600)
-
-
-
 });
 
