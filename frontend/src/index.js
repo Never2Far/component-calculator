@@ -23,12 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 
     setTimeout(() => {
-            const btn = document.getElementById('save-button')
+        const btn = document.getElementById('save-button')
+        
             const loginForm = document.getElementById('login-form')
+
+        if (User.currentUser()) {
+            btn.parentElement.style.display = 'flex';
+            loginForm.parentElement.style.display = 'none';
+        }
+        else {
+            btn.parentElement.style.display = 'none';
+            loginForm.parentElement.style.display = 'flex';
+        }
+            
             
             
             btn.addEventListener('click', () => {
-                Component.saveComponent(displayedComponent[0]);
+                Component.saveComponent(displayedComponent[0], User.currentUser());
             })
 
             loginForm.addEventListener('submit', (e) => {
