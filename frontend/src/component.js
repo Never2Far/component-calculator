@@ -14,7 +14,7 @@ class Component {
                 }
 
 
-static saveComponent(compObj) {
+static saveComponent(compObj, user_id) {
 
 const bCount = compObj.bandCount;
 const cCode = compObj.colorCode.toString();
@@ -28,7 +28,8 @@ const baseUnit = compObj.unit();
         band_count: bCount,
         color_code: cCode,
         value_display: vDisplay,
-        base_unit: baseUnit
+        base_unit: baseUnit,
+        user_id: user_id
     }
 
     // compObj.digit3 ? params['digit3'] = compObj.digit3 : false
