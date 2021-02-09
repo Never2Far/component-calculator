@@ -9,6 +9,7 @@ class ComponentsController < ApplicationController
         comp.base_unit = params[:base_unit]
         comp.value_display = params[:value_display]
         comp.color_code = params[:color_code]
+        comp.user_id = params[:user_id]
 
         comp.save!
 
