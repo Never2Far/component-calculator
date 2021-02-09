@@ -280,7 +280,8 @@ border-bottom-width: 2px;
 
 
 #save-button-container {
-    display: flex;
+
+    display: none;
     justify-content: center;
     flex-wrap: nowrap;
     align-items: flex-start;
@@ -316,6 +317,10 @@ border-bottom-width: 2px;
 
   #login-form-container 
   {
+      display: none;
+      border: solid;
+      border-color: grey;
+      border-width: 1px;
   }
 
   .centered {
