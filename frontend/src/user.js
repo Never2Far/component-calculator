@@ -1,22 +1,6 @@
 class User {
 
-
-
-// constructor(sessionID = null) {
-
-// if (sessionID == null) {
-//     session = newUser()
-// }
-
-// else {
-//     session = fetchUser(sessionID)
-// }
-
-
-
-// };
-
-
+    
 static findOrCreate(params, buttonID) {
 console.log(buttonID)
 let endpoint;
@@ -36,6 +20,8 @@ return fetch(`${BASE_URL}/${endpoint}`, {
     .then(user => {
         console.log(user)
         this.setCookie('user_id', user.user_id, 30)
+        const loginForm = document.getElementById('login-form')
+        loginForm.parentElement.style.display = "none";
         // document.cookie = `user_id=${user.user_id};`
 })
 
