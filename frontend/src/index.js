@@ -3,7 +3,8 @@ const COLORS_URL = `${BASE_URL}/colors`
 const COMPONENTS_URL = `${BASE_URL}/components`
 const COLORS=[];
 const page = document.getElementById('page-container');
-const displayedComponent = [];
+window.displayedComponent = [];
+
 
 
 
@@ -19,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(function(){ 
         window.colorObjs = [BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE, GOLD, SILVER] = COLORS;
         // console.log(colorObjs[2]);
-        window.successNotice = document.getElementById('success-notice');
+        
     }, 500);
 
     setTimeout(() => {
         const btn = document.getElementById('save-button')
+        const clearAllBtn = document.getElementById('clear-all-container')
         
             const loginForm = document.getElementById('login-form')
 
@@ -40,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             btn.addEventListener('click', () => {
                 Component.saveComponent(displayedComponent[0], User.currentUser());
+                clearAllBtn.style.display = 'flex';
+            })
+
+            clearAllBtn.addEventListener('click', () => {
+                Component.deleteAll();
+                clearAllBtn.style.display = 'none';
             })
 
             loginForm.addEventListener('submit', (e) => {

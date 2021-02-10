@@ -2,7 +2,7 @@ class Component {
 
     constructor(name = 'resistor', digit1 = 2, digit2 = 2, digit3 = null, 
                 multiplier = 1000, tolerance = null, 
-                tempCoef = null)     {
+                tempCoef = null, compID = 0)     {
 
                     this.name = name;
                     this.digit1 = digit1;
@@ -11,6 +11,7 @@ class Component {
                     this.multiplier = multiplier;
                     this.tolerance = tolerance;
                     this.tempCoef = tempCoef;
+                    this.compID = compID;
                 }
 
 
@@ -45,8 +46,12 @@ const baseUnit = compObj.unit();
         .then(response => response.json())
         .then(component => {
             
-            
-            console.log(component.data.attributes);
+            const successNotice = document.getElementById('success-notice');
+        
+            console.log(component.data);
+            const compID = component.data.id;
+            compObj.compID = compID
+            console.log(compID)
             const servedComp = component.data.attributes;
             const newComp = new Component();
             
@@ -54,12 +59,16 @@ const baseUnit = compObj.unit();
             newComp.name = servedComp.name;
             newComp.bandCount = servedComp.band_count;
             newComp.colorCode = servedComp.color_code.split(',');
+            newComp.compID = compID;
 
             console.log(newComp);
+            console.log(newComp.compID)
+
+            this.drawSmallComp(newComp);
         
-            successNotice.className = "show";
+            successNotice.className = "show notice";
                 setTimeout(() => {
-                    successNotice.className = successNotice.className.replace("show", ""); 
+                    successNotice.className = successNotice.className.replace("show notice", "notice"); 
                    }, 3000);
         })
 }
@@ -77,6 +86,7 @@ get bandCount() {
             element != null ? pcount++ : false
     }
     pcount--; //subtract one for name property
+    pcount--; //subtract one for compID property
     if (pcount >= 6) {
         return 6;
     }
@@ -279,6 +289,7 @@ const savedCompsContainer = document.querySelector('#saved-comps-container');
     const compDiv = newComp.querySelector('.small-comp-body')
     const valueDiv = newComp.querySelector('.small-comp-value')
     const valueSpan = document.createElement('span');
+    const deleteButton = newComp.querySelector('.delete-button');
 
     for (let i = 0; i < compObj.bandCount; i++) {
         let bandDiv = document.createElement('div');
@@ -302,9 +313,15 @@ const savedCompsContainer = document.querySelector('#saved-comps-container');
 
     }
 
+    deleteButton.addEventListener('click', () => {
+        console.log(compObj.compID);
+        this.deleteComponent(compObj);
+        savedCompsContainer.removeChild(newComp);
 
+    })
 
     newComp.removeAttribute('id');
+    // newComp.setAttribute('id', )
 
     valueSpan.innerText = compObj.displayValue();
     valueDiv.appendChild(valueSpan);
@@ -360,6 +377,50 @@ static drawBands(compObj) {
     displayedComponent.push(compObj)
 }
 
+static deleteAll() {
+    const savedCompsContainer = document.querySelector('#saved-comps-container');
+    const params = {
+        user_id: User.currentUser()
+    }
+    return fetch(`${COMPONENTS_URL}/delete_all` , {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(params)})
+        .then(response => response.json())
+        .then(result => {
+            while (savedCompsContainer.childElementCount > 1) {
+                savedCompsContainer.removeChild(savedCompsContainer.lastChild);
+            }
+            
+            const deleteNotice = document.getElementById('delete-notice');
+console.log(result)
+            deleteNotice.className = "show notice";
+            setTimeout(() => {
+                deleteNotice.className = deleteNotice.className.replace("show notice", "notice"); 
+               }, 3000);
+})
+}
+
+static deleteComponent(compObj) {
+
+// const params = {comp_id: compID}
+console.log(compObj)
+console.log(compObj.compID)
+    return fetch(`${COMPONENTS_URL}/${compObj.compID}` , {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify()})
+        .then(response => response.json())
+        .then(result => {
+            const deleteNotice = document.getElementById('delete-notice');
+console.log(result)
+            deleteNotice.className = "show notice";
+            setTimeout(() => {
+                deleteNotice.className = deleteNotice.className.replace("show notice", ""); 
+               }, 3000);
+
+        })
+}
 // static clearBands() {
 //     const compDiv = document.querySelector('#component');
 // }

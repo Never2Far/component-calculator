@@ -105,6 +105,13 @@ grid-area: component;
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: 2px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
     /* vertical-align: top; */
 }
 
@@ -115,6 +122,8 @@ grid-area: component;
   border-top-style: solid;
     border-top-color: black;
     border-top-width: 2px;
+    
+    
     /* vertical-align: top; */
 }
 
@@ -293,7 +302,7 @@ border-bottom-width: 2px;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
-#success-notice {
+.notice {
     visibility: hidden; /* Hidden by default. Visible on click */
     min-width: 250px; /* Set a default minimum width */
     margin-left: -125px; /* Divide value of min-width by 2 */
@@ -309,7 +318,7 @@ border-bottom-width: 2px;
   }
   
   /* Show the snackbar when clicking on a button (class added with JavaScript) */
-  #success-notice.show {
+  .show {
     visibility: visible; /* Show the snackbar */
     /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
     However, delay the fade out process for 2.5 seconds */
@@ -464,7 +473,10 @@ border-top-right-radius: 30px;
     box-sizing: border-box;
     border-bottom-style: solid;
     border-bottom-color: black;
-    border-bottom-width: 1px;}
+    border-bottom-width: 1px;
+    display: flex;
+    justify-content: flex-end;
+}
   
   .small-comp-br { grid-area: small-comp-br;
     box-sizing: border-box;
@@ -560,3 +572,51 @@ border-top-right-radius: 30px;
 .grey {
     background-color: grey;
 }
+
+/* .delete-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+} */
+
+.delete-button {
+    background-color: rgb(236, 101, 101);
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    /* position: absolute; */
+    /* top: 1rem;
+    right: 1rem; */
+    cursor: pointer;
+  }
+  
+  #clear-all-container {
+      display: none;
+  }
+   /* .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }  */
+  
+ .delete-button::before,
+  .delete-button::after {
+      content: '';
+      /* width: 1px; */
+      /* height: 100%; */
+      background: #333;
+      display: block;
+      transform: rotate(45deg) translateX(0px);
+      /* position: absolute; */
+      /* left: 50%;
+      top: 0; */
+  }
+  
+  .delete-button::after {
+      transform: rotate(-45deg) translateX(0px);
+  } 

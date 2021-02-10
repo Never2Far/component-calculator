@@ -17,9 +17,11 @@
      <div id="sub-page-container">
         <div id="component-container">
 <!-- <div id="left-leg"> -->
-    <div id="left-top"></div>
+    <div id="left-top">
+        <span>Component</span>
+    </div>
 <div id="left-bottom"></div>
-<!-- </div> -->
+
 
     <div id="component">
         
@@ -56,7 +58,8 @@
 
 </div><br>
 
-<div id="success-notice">Component was saved successfully!</div>
+<div id="success-notice" class="notice">Component was saved successfully!</div>
+<div id="delete-notice" class="notice">Component was successfully removed from the server.</div>
 <br>
 
 <h3><label for="band-count-picker">Choose the number of bands on the component:</label></h3>
@@ -80,6 +83,9 @@
     <div id="tolerance-col" class="color-picker-column"><span class='column-title'>Tolerance</span></div>
     <div id="temp-coef-col" class="color-picker-column"><span class='column-title'>Temperature<br>Coefficient</span></div>
 </div>
+<div id="clear-all-container" class="centered">
+<button id="clear-all-button">Clear ALL</button>
+</div>
 <div id="saved-comps-container">
     <!-- <div class="comp-col-1"> -->
         <!-- <div class="saved-comp-container"> -->
@@ -87,7 +93,9 @@
             <div class="small-comp-body"></div>
             <div class="small-comp-tl"></div>
             <div class="small-comp-bl"></div>
-            <div class="small-comp-tr"></div>
+            <div class="small-comp-tr">
+                <button class="delete-button">X</button>
+            </div>
             <div class="small-comp-br"></div>
             <div class="small-comp-value"></div>
           </div>
