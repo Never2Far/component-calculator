@@ -272,12 +272,47 @@ this.tempCoef = null;
     }
     return this.colorCode
 }
+static drawSmallComp(compObj) {
+    const smallCompTemplate = document.querySelector('#small-comp-template');
+const savedCompsContainer = document.querySelector('#saved-comps-container');
+    const newComp = smallCompTemplate.cloneNode(true);
+    const compDiv = newComp.querySelector('.small-comp-body')
+    const valueDiv = newComp.querySelector('.small-comp-value')
+    const valueSpan = document.createElement('span');
 
+    for (let i = 0; i < compObj.bandCount; i++) {
+        let bandDiv = document.createElement('div');
+
+        if (i == (compObj.bandCount - 1)) {
+            bandDiv.setAttribute('class', `small-color-band-last ${compObj.colorCode[i]}`);
+            // valueDiv.setAttribute('class', `band-value-last`);
+        }
+        else {
+            bandDiv.setAttribute('class', `small-color-band ${compObj.colorCode[i]}`);
+        }
+
+        if (compObj.colorCode[i] == 'white') {
+            bandDiv.style.borderStyle = 'none dashed none dashed'
+            bandDiv.style.borderWidth = '1px'
+            bandDiv.style.borderColor = 'black'
+            bandDiv.style.backgroundColor = ''
+        }
+        
+        compDiv.appendChild(bandDiv);
+
+    }
+
+
+
+    newComp.removeAttribute('id');
+
+    valueSpan.innerText = compObj.displayValue();
+    valueDiv.appendChild(valueSpan);
+    savedCompsContainer.appendChild(newComp);
+}
 
 static drawBands(compObj) {
     
-
-
     const compDiv = document.querySelector('#component');
     // const valueContainer = document.querySelector('#band-value-container');
     while (compDiv.firstChild) {
