@@ -16,6 +16,31 @@ class ComponentsController < ApplicationController
         render json: ComponentSerializer.new(comp).serializable_hash.to_json
 
     end
+
+    def destroy
+        comp = Component.find_by(id: params[:id])
+
+
+        if comp.destroy
+            render json:  {result: true}
+        else
+            render json:  {result: false}
+        end
+
+        
+
+    end
+
+    def destroy_all
+        user = User.find_by(id: params[:user_id])
+
+        if user.components.destroy_all
+            render json:  {result: true}
+        else
+            render json:  {result: false}
+        end
+
+    end
     # create_table "components", force: :cascade do |t|
     #     t.string "name"
     #     t.float "value"
