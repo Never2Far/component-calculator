@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "greenLights";
+  src: url(src/fonts/Greenlights-3XmX.otf) format("truetype");
+}
+/* digital-7
+DIGITALDREAM
+greenlights */
 
 html {
     min-height: 100vh;
@@ -34,9 +41,14 @@ html {
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
+    padding-bottom: 2.5rem;
   }
 
-
+.title-text {
+  font-family: "digitalDream";
+  font-size: x-large;
+  font-weight: bold;
+}
 
   #component-container {
     display: grid;
@@ -144,6 +156,13 @@ grid-area: component;
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: 2px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    align-content: stretch;
+    align-self: auto;
+    flex: 0 0 auto;
 }
 
 #right-bottom {
@@ -620,3 +639,11 @@ border-top-right-radius: 30px;
   .delete-button::after {
       transform: rotate(-45deg) translateX(0px);
   } 
+
+  #footer {
+    position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 2.5rem; 
+      text-align: center;
+  }
