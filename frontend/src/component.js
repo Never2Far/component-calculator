@@ -21,6 +21,7 @@ const bCount = compObj.bandCount;
 const cCode = compObj.colorCode.toString();
 const vDisplay = compObj.displayValue();
 const baseUnit = compObj.unit();
+const userID = user_id;
 
 
     const params = {
@@ -30,7 +31,7 @@ const baseUnit = compObj.unit();
         color_code: cCode,
         value_display: vDisplay,
         base_unit: baseUnit,
-        user_id: user_id
+        user_id: userID
     }
 
     // compObj.digit3 ? params['digit3'] = compObj.digit3 : false
@@ -60,7 +61,7 @@ const baseUnit = compObj.unit();
             newComp.bandCount = servedComp.band_count;
             newComp.colorCode = servedComp.color_code.split(',');
             newComp.compID = compID;
-
+            newComp.user_id = userID
             console.log(newComp);
             console.log(newComp.compID)
 
@@ -325,6 +326,8 @@ const savedCompsContainer = document.querySelector('#saved-comps-container');
 
     valueSpan.innerText = compObj.displayValue();
     valueDiv.appendChild(valueSpan);
+    const clearAllBtn = document.getElementById('clear-all-container')
+    clearAllBtn.style.display = 'flex'
     savedCompsContainer.appendChild(newComp);
 }
 
@@ -416,7 +419,7 @@ console.log(compObj.compID)
 console.log(result)
             deleteNotice.className = "show notice";
             setTimeout(() => {
-                deleteNotice.className = deleteNotice.className.replace("show notice", ""); 
+                deleteNotice.className = deleteNotice.className.replace("show notice", "notice"); 
                }, 3000);
 
         })
