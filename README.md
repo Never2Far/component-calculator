@@ -6,7 +6,7 @@ The first 2 bands (left-most) always represent the first 2 significant digits of
 
 ![alt text](https://github.com/Never2Far/component-calculator/blob/master/frontend/src/images/color-chart.jpg?raw=true)
 
-The calculator is fully functional as-is, however users can make an account and sign-in if they wish to save their recent/frequent searches.
+The Component Calculator is fully functional as-is, however users can make an account and sign-in if they wish to save their recent/frequent searches.
 
 This app was created to satisfy the requirements of The Flatiron School's JavaScript Portfolio Project.  This project was focused on creating a single-page application (SPA) using a Ruby on Rails server as a backend, and JavaScript(vanilla) for the front-end. All communication between the front-end and server is carried out asynchronously (AJAX), with JSON as the communication format. The backend features CRUD actions, and RESTful naming conventions. The project also show-cases the use of Object Oriented JavaScript to group related data and behavior.
 
