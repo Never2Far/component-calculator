@@ -22,6 +22,17 @@ return fetch(`${BASE_URL}/${endpoint}`, {
         this.setCookie('user_id', user.user_id, 30)
         const loginForm = document.getElementById('login-form')
         loginForm.parentElement.style.display = "none";
+        const btn = document.getElementById('save-button')
+        btn.parentElement.style.display = 'flex';
+        const signoutBtn = document.getElementById('signout-button');
+        signoutBtn.style.display = 'inline-block';
+
+        User.fetchSaved();
+        
+
+
+
+
         // document.cookie = `user_id=${user.user_id};`
 })
 
@@ -65,6 +76,45 @@ static  currentUser() {
       }
   
 
+      static signOut() {
+        const savedCompsContainer = document.querySelector('#saved-comps-container');
 
+        document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        const clearAllBtn = document.getElementById('clear-all-container')
+        clearAllBtn.style.display = 'none'
+        
+        while (savedCompsContainer.childElementCount > 1) {
+          savedCompsContainer.removeChild(savedCompsContainer.lastChild);
+      }
+      }
+
+      static fetchSaved() {
+
+        const params = {user_id: this.currentUser()}
+
+
+        return fetch(`${BASE_URL}/users/${this.currentUser()}/components`)
+          .then(response => response.json())
+          .then(userComps => {
+
+              console.log(userComps);
+
+              for (const comp of userComps.data) {
+                const newCompObj = new Component();
+            
+                newCompObj.name = comp.attributes.name;
+                newCompObj.bandCount = comp.attributes.band_count;
+                newCompObj.colorCode = comp.attributes.color_code.split(',');
+                newCompObj.compID = parseInt(comp.id);
+
+                Component.drawSmallComp(newCompObj)
+              }
+
+
+          })
+
+
+        }
+      
 
 }

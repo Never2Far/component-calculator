@@ -28,16 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const clearAllBtn = document.getElementById('clear-all-container')
         
             const loginForm = document.getElementById('login-form')
+        const signoutBtn = document.getElementById('signout-button');
+  
+
 
         if (User.currentUser()) {
             btn.parentElement.style.display = 'flex';
             loginForm.parentElement.style.display = 'none';
+            signoutBtn.style.display = 'inline-block';
+            User.fetchSaved();
         }
         else {
             btn.parentElement.style.display = 'none';
             loginForm.parentElement.style.display = 'flex';
+            signoutBtn.style.display = 'none';
         }
             
+
+        signoutBtn.addEventListener('click', () => {
+            User.signOut();
+            btn.parentElement.style.display = 'none';
+            loginForm.parentElement.style.display = 'flex';
+            signoutBtn.style.display = 'none';
+        })
             
             
             btn.addEventListener('click', () => {
