@@ -61,7 +61,7 @@ const userID = user_id;
             newComp.bandCount = servedComp.band_count;
             newComp.colorCode = servedComp.color_code.split(',');
             newComp.compID = compID;
-            newComp.user_id = userID
+            // newComp.user_id = userID
             console.log(newComp);
             console.log(newComp.compID)
 
