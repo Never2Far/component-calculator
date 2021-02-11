@@ -2,9 +2,6 @@
   font-family: "greenLights";
   src: url(src/fonts/Greenlights-3XmX.otf) format("truetype");
 }
-/* digital-7
-DIGITALDREAM
-greenlights */
 
 html {
     min-height: 100vh;
@@ -45,9 +42,10 @@ html {
   }
 
 .title-text {
-  font-family: "digitalDream";
-  font-size: x-large;
-  font-weight: bold;
+  font-family: "greenLights";
+  font-size: xx-large;
+  z-index: 1;
+  /* font-weight: bold; */
 }
 
   #component-container {
@@ -163,6 +161,13 @@ grid-area: component;
     align-content: stretch;
     align-self: auto;
     flex: 0 0 auto;
+    position: relative;
+}
+
+#signout-button {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 #right-bottom {
