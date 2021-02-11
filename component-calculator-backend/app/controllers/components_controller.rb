@@ -1,6 +1,13 @@
 class ComponentsController < ApplicationController
 
 
+
+    def index
+        user = User.find_by(id: params[:user_id])
+        comps = user.components
+        render json: ComponentSerializer.new(comps).serializable_hash.to_json
+    end
+
     def create
         comp = Component.new
         comp.name = params[:name]
