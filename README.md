@@ -6,7 +6,7 @@ The first 2 bands (left-most) always represent the first 2 significant digits of
 
 ![alt text](https://github.com/Never2Far/component-calculator/blob/master/frontend/src/images/color-chart.jpg?raw=true)
 
-Resistor values (resistance) are expressed in units of Ohms (&#937;), capacitor values (capacitance) are expressed in units of pico-Farads (pF), and inductor values are expressed in units of micro-Henries (&#956;H)
+A resistor's value, or resistance, is expressed in units of Ohms (&#937;), capacitor values (capacitance) are expressed in units of pico-Farads (pF), and inductor values are expressed in units of micro-Henries (&#956;H)
 
 The Component Calculator is fully functional as-is, however users can make an account and sign-in if they wish to save their recent/frequent searches.
 
