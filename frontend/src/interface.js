@@ -183,4 +183,4 @@ function compFromPicker() {
      Component.drawBands(updatedComp);
 }
 
-}, 2000)
+}, 1000)
