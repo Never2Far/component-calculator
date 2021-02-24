@@ -128,10 +128,3 @@ silver.tolerance_letter = 'K'
 silver.temp_coefficient = nil
 silver.temp_coefficient_letter = nil
 silver.save
-
-# pattern = Pattern.new
-# pattern.color1_id = 2
-# pattern.color2_id = 2
-# pattern.color3_id = 1
-# pattern.save!
-
