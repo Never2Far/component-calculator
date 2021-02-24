@@ -1,16 +1,14 @@
 class Color {
+
     constructor(name, digit, multiplier, tolerance = null, tempCoef = null) {
-    this.name = name;
-    this.digit = digit;
-    this.multiplier = multiplier;
-    this.tolerance = tolerance;
-    this.tempCoef = tempCoef;
+        this.name = name;
+        this.digit = digit;
+        this.multiplier = multiplier;
+        this.tolerance = tolerance;
+        this.tempCoef = tempCoef;
     }
 
-    
-
     static fetchColors() {
-        // const colorArr = [];
         fetch(COLORS_URL)
         .then(response => response.json())
         .then(colors => {
@@ -22,61 +20,54 @@ class Color {
                  color.attributes.tolerance,
                  color.attributes.temp_coefficient
                 )
-                // console.log(newColor);
                 COLORS.push(newColor);
-                // colorArr.push(newColor);
             }
-        })
-//         console.log(colorArr)
-// return colorArr;
-        }   
+        });
+    }   
 
-static colorFromDigit(digit) {
-    let res;
-    for (const key in COLORS) {
+    static colorFromDigit(digit) {
+        let res;
+        for (const key in COLORS) {
             const element = COLORS[key];
             if (element.digit == digit) {
                 res = element.name;
             }
+        }
+        return res
     }
-     return res
-}
 
-static colorFromMultiplier(multiplier) {
-
-    let res;
-    for (const key in COLORS) {
+    static colorFromMultiplier(multiplier) {
+        let res;
+        for (const key in COLORS) {
             const element = COLORS[key];
             if (element.multiplier == multiplier) {
                 res = element.name;
-            }
+             }
+        }
+        return res
     }
-     return res
-}
 
-static colorFromTolerance(tolerance) {
-    let res;
-    for (const key in COLORS) {
+    static colorFromTolerance(tolerance) {
+        let res;
+        for (const key in COLORS) {
             const element = COLORS[key];
             if (element.tolerance == tolerance) {
                 res = element.name;
             }
+        }
+        return res
     }
-     return res
-}
 
-static colorFromTempCoeff(tempCoef) {
-    let res;
-    for (const key in COLORS) {
+    static colorFromTempCoeff(tempCoef) {
+        let res;
+        for (const key in COLORS) {
             const element = COLORS[key];
             if (element.tempCoef == tempCoef) {
                 res = element.name;
             }
+        }
+        return res
     }
-     return res
-}
-             // function getColor(name = 'red') {
-
 
     static propValueFromColorName(colorName, propertyName) {
         return eval(colorName.toUpperCase()+"."+propertyName)
@@ -87,9 +78,9 @@ static colorFromTempCoeff(tempCoef) {
             return '#8b4513'
         }
         else {
-        var ctx = document.createElement('canvas').getContext('2d');
-         ctx.fillStyle = colorName;
-         return ctx.fillStyle; 
+            var ctx = document.createElement('canvas').getContext('2d');
+            ctx.fillStyle = colorName;
+            return ctx.fillStyle; 
         }
     }
 }
